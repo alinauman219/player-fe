@@ -29,7 +29,7 @@ function Player(props) {
                         </select>
                     </div>
                 </div>
-                <button onClick={()=>console.log(username)} className="btn btn-primary float-right">Add Player</button>
+                <button onClick={()=>addPlayer()} className="btn btn-primary float-right">Add Player</button>
             
         </div>
     </React.Fragment>

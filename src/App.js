@@ -24,7 +24,6 @@ class App extends Component {
         let {data}  = await axios.get(`https://player-nauman.herokuapp.com/`);
 
         this.setState({ players: data, loading: false });
-        return data;
     }
 
     onInputChange = (event) => {
@@ -39,7 +38,12 @@ class App extends Component {
         this.setState({ player });
     }
 
-    addPlayer = (player)=>{}
+    addPlayer = async () =>{
+        const { player } = this.state;
+        await axios.post(`https://player-nauman.herokuapp.com/`, player);
+        this.setState({ player:{username:"",firstName:"",lastName:"",number:"",position:""} });
+        this.fetchData();
+    }
     
     updatePlayer = (player)=>{}
 
