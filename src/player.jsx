@@ -1,27 +1,27 @@
 import React from 'react';
-function Player() {
+function Player(props) {
+    const {onInputChange, addPlayer} = props;
+    const {username,firstName,lastName,number,position} = props.player;
   return (
     <React.Fragment>
         <div className="container"  style={{marginTop:"10px"}}>
-            <form className="add-player-form" action="" method="post" >
                 <div className="form-row">
                     <div className="form-group col-md-4">
-                        <input type="text" className="form-control" name="first_name" id="first-name" placeholder="First Name"></input>
+                        <input onChange={(event) => onInputChange(event)} value={firstName || ''} type="text" className="form-control" name="firstName" id="first-name" placeholder="First Name"></input>
                     </div>
                     <div className="form-group col-md-4">
-                        <input type="text" className="form-control" name="last_name" id="last-name" placeholder="Last Name" required></input>
+                        <input onChange={(event) => onInputChange(event)} value={lastName || ''} type="text" className="form-control" name="lastName" id="last-name" placeholder="Last Name" required></input>
                     </div>
                     <div className="form-group col-md-4">
-                        <input type="text" className="form-control" name="username" id="username" placeholder="Username" required></input>
+                        <input onChange={(event) => onInputChange(event)} value={username || ''} type="text" className="form-control" name="username" id="username" placeholder="Username" required></input>
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-6">
-                        <input type="number" className="form-control" name="number" id="number" placeholder="Number" required></input>
+                        <input onChange={(event) => onInputChange(event)} value={number || ''} type="number" className="form-control" name="number" id="number" placeholder="Number" required></input>
                     </div>
                     <div className="form-group col-md-6">
-                        <select id="position" name="position" className="form-control" required>
-                            <option disabled>Choose position</option>
+                        <select onChange={(event) => onInputChange(event)} value={position || ''} id="position" name="position" className="form-control" required>
                             <option>Goalkeeper</option>
                             <option>Defender</option>
                             <option>Midfielder</option>
@@ -29,8 +29,8 @@ function Player() {
                         </select>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary float-right">Add Player</button>
-            </form>
+                <button onClick={()=>console.log(username)} className="btn btn-primary float-right">Add Player</button>
+            
         </div>
     </React.Fragment>
   );
