@@ -11,7 +11,7 @@ class App extends Component {
         this.state = {
             loading: false,
             players: [],
-            player:{username:"",firstName:"",lastName:"",number:"",position:""}
+            player:{username:"",firstName:"",lastName:"",number:"",position:"Goalkeeper"}
         }
     }
 
@@ -41,13 +41,22 @@ class App extends Component {
     addPlayer = async () =>{
         const { player } = this.state;
         await axios.post(`https://player-nauman.herokuapp.com/`, player);
-        this.setState({ player:{username:"",firstName:"",lastName:"",number:"",position:""} });
+        this.setState({ player:{username:"",firstName:"",lastName:"",number:"",position:"Goalkeeper"} });
         this.fetchData();
     }
     
-    updatePlayer = (player)=>{}
+    updatePlayer = async (id)=>{
+        const { player } = this.state;
+        await axios.put(`https://player-nauman.herokuapp.com/${id}`, player);
+        this.setState({ player:{username:"",firstName:"",lastName:"",number:"",position:"Goalkeeper"} });
+        this.fetchData();
+    }
 
-    deletePlayer = (id)=>{}
+    deletePlayer = async (id)=>{
+        await axios.delete(`https://player-nauman.herokuapp.com/${id}`);
+        this.setState({ player:{username:"",firstName:"",lastName:"",number:"",position:"Goalkeeper"} });
+        this.fetchData();
+    }
     
 
     render(){

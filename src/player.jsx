@@ -1,7 +1,7 @@
 import React from 'react';
 function Player(props) {
     const {onInputChange, addPlayer} = props;
-    const {username,firstName,lastName,number,position} = props.player;
+    let {username,firstName,lastName,number,position} = props.player;
   return (
     <React.Fragment>
         <div className="container"  style={{marginTop:"10px"}}>
@@ -21,7 +21,7 @@ function Player(props) {
                         <input onChange={(event) => onInputChange(event)} value={number || ''} type="number" className="form-control" name="number" id="number" placeholder="Number" required></input>
                     </div>
                     <div className="form-group col-md-6">
-                        <select onChange={(event) => onInputChange(event)} value={position || ''} id="position" name="position" className="form-control" required>
+                        <select onChange={(event) => onInputChange(event)} value={position} id="position" name="position" className="form-control" required>
                             <option>Goalkeeper</option>
                             <option>Defender</option>
                             <option>Midfielder</option>

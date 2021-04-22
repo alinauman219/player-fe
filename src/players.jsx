@@ -1,5 +1,5 @@
 function Players(props) {
-    let {players, loading, onPlayerSelect} = props; 
+    let {players, loading, onPlayerSelect,updatePlayer,deletePlayer} = props; 
     
   return (
     <div className="table-wrapper"  style={{marginTop:"10px"}}>
@@ -26,8 +26,8 @@ function Players(props) {
                             <td >{player.position}</td>
                             <td >{player.number}</td>
                             <td >
-                                <button className="btn btn-warning" onClick={() => console.log(player._id)}>Update</button>
-                                <button className="btn btn-primary" onClick={() => console.log(player._id)}>Delete</button>
+                                <button className="btn btn-warning" onClick={() => updatePlayer(player._id)}>Update</button>
+                                <button className="btn btn-primary" onClick={() => deletePlayer(player._id)}>Delete</button>
                             </td>
                         </tr>
                         })}
